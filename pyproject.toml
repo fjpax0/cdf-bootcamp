@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cognite-toolkit-bootcamp"
+version = "0.3.0"
+description = "cognite tool kit updated"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+cognite-toolkit = "0.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
