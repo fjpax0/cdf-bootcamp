@@ -8,8 +8,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "0 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
     - Oslo
   authentication:
@@ -19,8 +19,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "1 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Houston
   authentication:
@@ -30,8 +30,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "2 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Kuala Lumpur
   authentication:
@@ -41,8 +41,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "3 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Hannover
   authentication:
@@ -53,8 +53,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "4 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Nuremberg
   authentication:
@@ -65,8 +65,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "5 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Marseille
   authentication:
@@ -77,8 +77,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "6 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Sao Paulo
   authentication:
@@ -89,8 +89,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "7 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Chicago
   authentication:
@@ -101,8 +101,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "8 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - Rotterdam
   authentication:
@@ -113,8 +113,8 @@
   functionExternalId: icapi_datapoints_extractor
   cronExpression: "9 0 * * *"
   data:
-    backfill: True
-    hours: 720
+    backfill: true
+    hours: 1
     sites:
       - London
   authentication:
