@@ -1,29 +1,46 @@
-name: Toolkit Dry Run
-
+name: Deploy modules to prod project
 on:
   push:
     branches:
-      - main
+      - main # run when this branch changes (following a Pull Request)
+    paths:
+      - modules/** # run when changes in modules
+      - config.prod.yaml # run when changes in config.test.yaml
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
 
+env:
+  PYTHON_VERSION: '3.11'
 jobs:
   build-modules:
     runs-on: ubuntu-latest
-    # refers to the Environment concept in GitHub
-    environment: dev
-    name: Deploy
-    container:
-      image: cognite/toolkit:0.3.2
-      env:
-        CDF_CLUSTER: ${{ vars.CDF_CLUSTER }}
-        CDF_PROJECT: ${{ vars.CDF_PROJECT }}
-        IDP_CLIENT_ID: ${{ vars.IDP_CLIENT_ID }}
+    environment: prod
+    env:
+        CDF_PROJECT: ${{ secrets.CDF_PROJECT }}
+        IDP_CLIENT_ID: ${{ secrets.IDP_CLIENT_ID }}
+        IDP_TOKEN_URL: ${{ secrets.IDP_TOKEN_URL }}
+        DATA_DEVELOPER_OBJECT_ID: ${{ secrets.DATA_DEVELOPER_OBJECT_ID }}
+        DATA_PIPELINE_OEE_OBJECT_ID: ${{ secrets.DATA_PIPELINE_OEE_OBJECT_ID }}
+        ICAPI_EXTRACTORS_OBJECT_ID: ${{ secrets.ICAPI_EXTRACTORS_OBJECT_ID }}
+        DATA_PIPELINE_OEE_CLIENT_ID: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_ID }}
+        ICAPI_EXTRACTORS_CLIENT_ID: ${{ secrets.ICAPI_EXTRACTORS_CLIENT_ID }}
+        CDF_CLUSTER: ${{ secrets.CDF_CLUSTER }}
+        IDP_TENANT_ID: ${{ secrets.IDP_TENANT_ID }}
         IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
-        IDP_TENANT_ID: ${{ vars.IDP_TENANT_ID }}
-      volumes:
-        - :/app
+        DATA_PIPELINE_OEE_CLIENT_SECRET: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_SECRET }}
+        ICAPI_EXTRACTORS_CLIENT_SECRET: ${{ secrets.ICAPI_EXTRACTORS_CLIENT_SECRET }}
+    name: Deploy
     steps:
       - uses: actions/checkout@v4
-      - name: Build the modules
-        run: cdf build
-      - name: Deploy the modules
-        run: cdf deploy
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install cdf-tk
+        run: pip install cognite-toolkit==0.3.2
+      - name: "Build the templates"
+        run: cdf-tk build --build-dir=./build --env=prod
+      - name: "Deploy"
+        run: echo "Deploying to ${CDF_PROJECT} with ${CDF_CLUSTER}"
+      - name: "Deploy the templates"
+        run: |
+          cdf-tk deploy --env=prod

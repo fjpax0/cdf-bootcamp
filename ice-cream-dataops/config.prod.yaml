@@ -1,0 +1,45 @@
+environment:
+  name: test
+  project: cdf-bootcamp-76-prod
+  type: test
+  selected:
+    - modules/bootcamp/data_foundation
+    - modules/bootcamp/ice_cream_api
+    - modules/bootcamp/use_cases/oee
+
+
+variables:
+  modules:
+    bootcamp:
+      CDF_PROJECT: cdf-bootcamp-76-prod # ex. cdf-bootcamp-01-test
+      IDP_CLIENT_ID: ${IDP_CLIENT_ID} # replaced by .env
+      IDP_CLIENT_SECRET: ${IDP_CLIENT_SECRET} # replaced by .env
+      IDP_TENANT_ID: ${IDP_TENANT_ID} # replaced by .env
+      # This is related to the cluster where the CDF project is hosted.
+      CDF_URL: https://westeurope-1.cognitedata.com
+      IDP_SCOPES: https://westeurope-1.cognitedata.com/.default
+      IDP_TOKEN_URL: ${IDP_TOKEN_URL} # replaced by .env
+      # Groups
+      # OBJECT ID FOR TEST/PROD DATA DEVELOPER ENTRA GROUP
+      data_developer_source_id: 5fc05c12-4f67-4ba4-a846-b6a7363c5c23
+      # OBJECT ID FOR TEST/PROD DATA PIPELINE OEE ENTRA GROUP
+      data_pipeline_oee_source_id: e067ec24-724b-469d-93af-3911a88f2289
+      # OBJECT ID FOR TEST/PROD ADMIN TK ENTRA GROUP
+      readwrite_source_id: 8bf73b8a-1579-4966-ac6e-41d2ba6e5b87
+      # OBJECT ID FOR TEST/PROD ADMIN TK ENTRA GROUP
+      readonly_source_id: 1cf1188f-70a5-4fce-bdfd-302a3b6924dd
+      # OBJECT ID FOR TEST/PROD ADMIN TK ENTRA GROUP
+      icapi_extractors_source_id: d51af6bc-625c-4c91-bcfd-9ecd66ec328f
+
+      # Client Ids
+      data_pipeline_oee_client_id: ${DATA_PIPELINE_OEE_CLIENT_ID} # replaced by .env
+      data_pipeline_oee_client_secret: ${DATA_PIPELINE_OEE_CLIENT_SECRET} # replaced by .env
+      icapi_extractors_client_id: ${ICAPI_EXTRACTORS_CLIENT_ID} # replaced by .env
+      icapi_extractors_client_secret: ${ICAPI_EXTRACTORS_CLIENT_SECRET} # replaced by .env
+      #ice_cream_api:
+      icapi_ds_external_id: ds_icapi
+
+      use_cases:
+        oee: 
+          uc_oee_ds_external_id: ds_uc_oee
+
