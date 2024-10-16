@@ -29,6 +29,10 @@ jobs:
         IDP_CLIENT_SECRET: ${{ secrets.IDP_CLIENT_SECRET }}
         DATA_PIPELINE_OEE_CLIENT_SECRET: ${{ secrets.DATA_PIPELINE_OEE_CLIENT_SECRET }}
         ICAPI_EXTRACTORS_CLIENT_SECRET: ${{ secrets.ICAPI_EXTRACTORS_CLIENT_SECRET }}
+        LOGIN_FLOW: ${{ secrets.LOGIN_FLOW }}
+        CDF_URL: ${{ secrets.CDF_URL }}
+        IDP_SCOPES: ${{ secrets.IDP_SCOPES }}
+
     name: Deploy
     steps:
       - uses: actions/checkout@v4
